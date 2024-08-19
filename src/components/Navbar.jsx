@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
+import { googleLogin } from '../api/firebase';
 
 export default function NavBar() {
   return (
@@ -16,7 +17,12 @@ export default function NavBar() {
         <Link to={'/products/new'} className=' text-2xl'>
           <BsFillPencilFill />
         </Link>
-        <button className='bg-brand text-white p-1 rounded-sm '>Login</button>
+        <button
+          onClick={googleLogin}
+          className='bg-brand text-white p-1 rounded-sm '
+        >
+          Login
+        </button>
       </nav>
     </header>
   );

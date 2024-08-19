@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
-import { googleLogin } from '../api/firebase';
+import { googleLogin, googleLogout, onUserStateChange } from '../api/firebase';
+import { useEffect, useState } from 'react';
 
 export default function NavBar() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onUserStateChange(setUser);
+  }, []);
+
   return (
     <header className='flex justify-between p-2 border-b border-gray-300'>
       <Link to={'/'} className='flex items-center text-4xl gap-2 text-brand'>
@@ -17,12 +24,22 @@ export default function NavBar() {
         <Link to={'/products/new'} className=' text-2xl'>
           <BsFillPencilFill />
         </Link>
-        <button
-          onClick={googleLogin}
-          className='bg-brand text-white p-1 rounded-sm '
-        >
-          Login
-        </button>
+        {!user && (
+          <button
+            onClick={googleLogin}
+            className='bg-brand text-white p-1 rounded-sm '
+          >
+            Login
+          </button>
+        )}
+        {user && (
+          <button
+            onClick={googleLogout}
+            className='bg-brand text-white p-1 rounded-sm '
+          >
+            Logout
+          </button>
+        )}
       </nav>
     </header>
   );

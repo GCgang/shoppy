@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
 import { googleLogin, googleLogout, onUserStateChange } from '../api/firebase';
 import { useEffect, useState } from 'react';
+import User from './User';
 
 export default function NavBar() {
   const [user, setUser] = useState();
@@ -24,6 +25,7 @@ export default function NavBar() {
         <Link to={'/products/new'} className=' text-2xl'>
           <BsFillPencilFill />
         </Link>
+        {user && <User user={user} />}
         {!user && (
           <button
             onClick={googleLogin}

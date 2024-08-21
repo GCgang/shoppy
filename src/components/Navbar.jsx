@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
 import User from './User';
 import { useAuthContext } from './context/AuthContext';
+import Button from './ui/Button';
 
 export default function NavBar() {
   const { user, googleLogin, googleLogout } = useAuthContext();
@@ -14,29 +15,19 @@ export default function NavBar() {
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
         <Link to={'/products'}>Products</Link>
-        <Link to={'/carts'} className=' text-2xl'>
-          <BsCart3 />
-        </Link>
-        <Link to={'/products/new'} className=' text-2xl'>
-          <BsFillPencilFill />
-        </Link>
-        {user && <User user={user} />}
-        {!user && (
-          <button
-            onClick={googleLogin}
-            className='bg-brand text-white p-1 rounded-sm '
-          >
-            Login
-          </button>
-        )}
         {user && (
-          <button
-            onClick={googleLogout}
-            className='bg-brand text-white p-1 rounded-sm '
-          >
-            Logout
-          </button>
+          <Link to={'/carts'} className=' text-2xl'>
+            <BsCart3 />
+          </Link>
         )}
+        {user && user.isAdmin && (
+          <Link to={'/products/new'} className=' text-2xl'>
+            <BsFillPencilFill />
+          </Link>
+        )}
+        {user && <User user={user} />}
+        {!user && <Button text={'Login'} onClick={googleLogin} />}
+        {user && <Button text={'Logout'} onClick={googleLogout} />}
       </nav>
     </header>
   );

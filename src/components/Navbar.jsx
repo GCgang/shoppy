@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
-import { googleLogin, googleLogout, onUserStateChange } from '../api/firebase';
-import { useEffect, useState } from 'react';
 import User from './User';
+import { useAuthContext } from './context/AuthContext';
 
 export default function NavBar() {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    onUserStateChange(setUser);
-  }, []);
+  const { user, googleLogin, googleLogout } = useAuthContext();
 
   return (
     <header className='flex justify-between p-2 border-b border-gray-300'>

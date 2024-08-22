@@ -4,7 +4,7 @@ import {
   googleLogin,
   googleLogout,
   onUserStateChange,
-} from '../../api/firebase';
+} from '../api/firebase';
 
 const AuthContext = createContext();
 

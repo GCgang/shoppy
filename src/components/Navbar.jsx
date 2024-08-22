@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsShop, BsCart3, BsFillPencilFill } from 'react-icons/bs';
 import User from './User';
-import { useAuthContext } from './context/AuthContext';
+import { useAuthContext } from '../context/AuthContext';
 import Button from './ui/Button';
 
 export default function NavBar() {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsShop, BsFillPencilFill } from 'react-icons/bs';
 import User from './User';
 import { useAuthContext } from '../context/AuthContext';
@@ -6,7 +6,8 @@ import Button from './ui/Button';
 import CartStatus from './CartStatus';
 
 export default function NavBar() {
-  const { user, googleLogin, googleLogout } = useAuthContext();
+  const { user, googleLogout } = useAuthContext();
+  const navigate = useNavigate();
 
   return (
     <header className='flex justify-between p-2 border-b border-gray-300'>
@@ -19,7 +20,6 @@ export default function NavBar() {
         {user && (
           <Link to={'/carts'}>
             <CartStatus />
-            
           </Link>
         )}
         {user && user.isAdmin && (
@@ -28,7 +28,7 @@ export default function NavBar() {
           </Link>
         )}
         {user && <User user={user} />}
-        {!user && <Button text={'Login'} onClick={googleLogin} />}
+        {!user && <Button text={'Login'} onClick={() => navigate('/login')} />}
         {user && <Button text={'Logout'} onClick={googleLogout} />}
       </nav>
     </header>

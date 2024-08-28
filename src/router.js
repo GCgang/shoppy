@@ -8,6 +8,7 @@ import NewProduct from './pages/NewProduct';
 import ProductDetail from './pages/ProductDetail';
 import Carts from './pages/Carts';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             <Carts />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ],
   },

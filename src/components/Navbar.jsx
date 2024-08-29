@@ -49,9 +49,13 @@ export default function NavBar() {
             <BsFillPencilFill />
           </Link>
         )}
-        {user && <User user={user} />}
-        {!user && <Button text={'Login'} onClick={() => navigate('/login')} />}
-        {user && <Button text={'Logout'} onClick={googleLogout} />}
+        <div>{user && <User user={user} />}</div>
+        <div>
+          {!user && (
+            <Button text={'Login'} onClick={() => navigate('/login')} />
+          )}
+          {user && <Button text={'Logout'} onClick={googleLogout} />}
+        </div>
       </nav>
       {toggle && (
         <div className='absolute top-full left-0 w-full bg-white z-10 p-4 '>

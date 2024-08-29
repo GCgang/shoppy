@@ -14,7 +14,6 @@ export default function NewProduct() {
     const { name, value, files } = e.target;
     if (name === 'file') {
       setFile(files && files[0]);
-      console.log(files[0]);
       return;
     }
     setProduct((product) => ({ ...product, [name]: value }));

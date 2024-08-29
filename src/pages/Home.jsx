@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <Products />
+      <Products filter='all' />
     </>
   );
 }

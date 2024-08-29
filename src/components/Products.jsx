@@ -5,7 +5,6 @@ export default function Products({ filter }) {
   const {
     productsQuery: { isLoading, error, data: products },
   } = useProducts();
-  console.log(filter);
   return (
     <>
       {isLoading && <p>Loading...</p>}

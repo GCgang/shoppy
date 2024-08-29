@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { getDatabase, ref, set, remove, get } from 'firebase/database';
 
@@ -22,11 +24,27 @@ const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 
 export function googleLogin() {
-  signInWithPopup(auth, provider).catch(console.error);
+  signInWithPopup(auth, provider) //
+    .catch(console.error);
 }
 
 export function googleLogout() {
-  signOut(auth).catch(console.error);
+  signOut(auth) //
+    .catch(console.error);
+}
+
+export function createUser(email, password) {
+  return createUserWithEmailAndPassword(auth, email, password) //
+    .catch((error) => {
+      throw error;
+    });
+}
+
+export function loginUser(email, password) {
+  return signInWithEmailAndPassword(auth, email, password) //
+    .catch((error) => {
+      throw error;
+    });
 }
 
 export function onUserStateChange(callback) {
@@ -37,14 +55,15 @@ export function onUserStateChange(callback) {
 }
 
 async function adminUser(user) {
-  return get(ref(database, 'admins')).then((snapshot) => {
-    if (snapshot.exists()) {
-      const admins = snapshot.val();
-      const isAdmin = admins.includes(user.uid);
-      return { ...user, isAdmin };
-    }
-    return user;
-  });
+  return get(ref(database, 'admins')) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admins = snapshot.val();
+        const isAdmin = admins.includes(user.uid);
+        return { ...user, isAdmin };
+      }
+      return user;
+    });
 }
 
 export async function addNewProduct(product, image) {
@@ -59,19 +78,21 @@ export async function addNewProduct(product, image) {
 }
 
 export async function getProducts() {
-  return get(ref(database, 'products')).then((snapshot) => {
-    if (snapshot.exists()) {
-      return Object.values(snapshot.val());
-    }
-    return [];
-  });
+  return get(ref(database, 'products')) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val());
+      }
+      return [];
+    });
 }
 
 export async function getCart(userId) {
-  return get(ref(database, `carts/${userId}`)).then((snapshot) => {
-    const items = snapshot.val() || {};
-    return Object.values(items);
-  });
+  return get(ref(database, `carts/${userId}`)) //
+    .then((snapshot) => {
+      const items = snapshot.val() || {};
+      return Object.values(items);
+    });
 }
 
 export async function addOrUpdateToCart(userId, product) {

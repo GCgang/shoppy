@@ -5,7 +5,7 @@ export default function useProducts() {
   const queryClient = useQueryClient();
 
   const productsQuery = useQuery({
-    queryKey: 'products',
+    queryKey: ['products'],
     queryFn: fetchProducts,
     staleTime: 1000 * 60,
   });

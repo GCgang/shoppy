@@ -55,7 +55,6 @@ export default function ProductDetail() {
             </select>
           </div>
           <div className='flex flex-col gap-2'>
-            {success && <p className='my-2'>✅ {success}</p>}
             <Button
               text='BUY NOW'
               bgColor='bg-black'
@@ -68,6 +67,7 @@ export default function ProductDetail() {
             ) : (
               <Button text='Log in' onClick={() => navigate('/login')} />
             )}
+            {success && <p>✅ {success}</p>}
             {!user && (
               <p className='py-4 text-lg'>
                 로그인 후 장바구니에 추가할 수 있습니다.

@@ -11,6 +11,8 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
     setError,
+    clearErrors,
+    reset,
   } = useForm();
 
   const { user, googleLogin, signUp, signIn } = useAuthContext();
@@ -39,6 +41,12 @@ export default function Login() {
     } catch (error) {
       setError('email', { message: error.message });
     }
+  };
+
+  const handleClick = () => {
+    clearErrors();
+    reset();
+    setLogin((prev) => !prev);
   };
 
   return (
@@ -104,10 +112,7 @@ export default function Login() {
             className='w-full bg-brand text-white py-4 rounded'
           ></Button>
         </form>
-        <button
-          className='w-full py-4'
-          onClick={() => setLogin((prev) => !prev)}
-        >
+        <button className='w-full py-4' onClick={handleClick}>
           {!login ? ' Log In' : 'Create Account'}
         </button>
         <div className='flex flex-col gap-2 mt-2'>

@@ -47,13 +47,14 @@ export default function NewProduct() {
           alt='local file'
         />
       )}
-      <form className='flex flex-col px-12' onSubmit={handleSubmit}>
+      <form className='flex flex-col px-12  gap-4' onSubmit={handleSubmit}>
         <input
           type='file'
           accept='image/*'
           name='file'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <input
           type='text'
@@ -62,6 +63,7 @@ export default function NewProduct() {
           placeholder='제품명'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <input
           type='number'
@@ -70,6 +72,7 @@ export default function NewProduct() {
           placeholder='가격'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <input
           type='text'
@@ -78,6 +81,7 @@ export default function NewProduct() {
           placeholder='카테고리'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <input
           type='text'
@@ -86,6 +90,7 @@ export default function NewProduct() {
           placeholder='제품 설명'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <input
           type='text'
@@ -94,6 +99,7 @@ export default function NewProduct() {
           placeholder='옵션들(콤마(,)로 구분)'
           required
           onChange={handleChange}
+          className='rounded-md w-full p-4 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand transition duration-200'
         />
         <Button
           text={isUploading ? '업로드중...' : '제품 등록하기'}

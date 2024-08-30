@@ -50,7 +50,7 @@ export default function Login() {
   };
 
   return (
-    <div className='flex justify-center items-center py-32'>
+    <section className='flex justify-center items-center py-32'>
       <div className='w-full max-w-lg px-4 rounded-lg '>
         <h2 className='text-center text-2xl font-bold'>
           {login ? 'LOGIN' : 'Create Account'}
@@ -126,6 +126,6 @@ export default function Login() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

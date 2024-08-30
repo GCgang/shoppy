@@ -1,7 +1,7 @@
 import ProductCard from './ProductCard';
 import useProducts from '../hooks/useProducts';
 
-export default function Products({ filter }) {
+export default function Products({ filter, searchProducts }) {
   const {
     productsQuery: { isLoading, error, data: products },
   } = useProducts();
@@ -13,6 +13,11 @@ export default function Products({ filter }) {
         {filter &&
           products &&
           filterProducts(filter, products).map((product) => (
+            <ProductCard key={product.id} product={product}></ProductCard>
+          ))}
+        {!filter &&
+          searchProducts &&
+          searchProducts.map((product) => (
             <ProductCard key={product.id} product={product}></ProductCard>
           ))}
       </ul>

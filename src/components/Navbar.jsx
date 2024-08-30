@@ -18,6 +18,7 @@ export default function NavBar() {
     { name: '청소', path: 'cleaning' },
     { name: '세탁', path: 'laundry' },
     { name: '수납/정리', path: 'organization' },
+    { name: '검색', path: 'search' },
   ];
 
   const handleToggle = () => setToggle(!toggle);

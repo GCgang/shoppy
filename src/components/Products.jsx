@@ -9,7 +9,7 @@ export default function Products({ filter }) {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <ul className='grid gird-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4'>
+      <ul className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4'>
         {filter &&
           products &&
           filterProducts(filter, products).map((product) => (

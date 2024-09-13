@@ -1,14 +1,11 @@
-const fetch = require('node-fetch');
-
 exports.handler = async function (event, context) {
   try {
     const response = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/images/v2/direct_upload`,
+      `https://api.cloudflare.com/client/v4/accounts/${process.env.REACT_APP_CLOUDFLARE_ACCOUNT_ID}/images/v2/direct_upload`,
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
-          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.REACT_APP_CLOUDFLARE_API_TOKEN}`,
         },
       }
     );

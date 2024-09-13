@@ -1,11 +1,17 @@
 export async function uploadImage(file) {
+  const uploadUrlResponse = await fetch(
+    '/.netlify/functions/get-cloudflare-upload-url'
+  );
+  const uploadUrlData = await uploadUrlResponse.json();
+
   const data = new FormData();
   data.append('file', file);
-  data.append('upload_preset', process.env.REACT_APP_CLOUDINARY_PRESET);
-  return fetch(process.env.REACT_APP_CLOUDINARY_URL, {
+
+  const uploadResponse = await fetch(uploadUrlData.result.uploadURL, {
     method: 'POST',
     body: data,
-  })
-    .then((res) => res.json())
-    .then((data) => data.url);
+  });
+
+  const result = await uploadResponse.json();
+  return result.result.variants[0];
 }
